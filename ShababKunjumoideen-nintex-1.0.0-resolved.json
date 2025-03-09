@@ -2,9 +2,10 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: "Nitex Integration"
+  description: API for demonstrating Swagger 2.x descriptor
 externalDocs:
   url: "https://88.209.161.120:50000/RESTAdapter/"
-host: "88.209.161.120:50000"
+host: 88.209.161.120:50000
 schemes:
   - "https"
 basePath: "/RESTAdapter"
