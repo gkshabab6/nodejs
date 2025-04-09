@@ -1,80 +1,81 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.1",
-    "title": "Nintex-New",
-    "description": "Nintex-New"
-  },
-  "externalDocs": {
-    "url": "http://88.209.161.120:50000"
-  },
-  "host": "88.209.161.120:50000",
-  "schemes": [
-    "http"
-  ],
-  "basePath": "/RESTAdapter",
-  "paths": {
-    "/nintex_integration": {
-      "post": {
-        "summary": "Test Posting",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Message"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "string"
-                },
-                "message": {
-                  "type": "string"
-                }
-              },
-              "example": {
-                "status": "S",
-                "message": "DATA received"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "Message": {
-      "type": "object",
-      "properties": {
-        "glAccount": {
-          "type": "string",
-          "description": "GL Account"
-        },
-        "date": {
-          "type": "string",
-          "description": "Date - DD.MM.YYYY"
-        },
-        "amount": {
-          "type": "string",
-          "description": "Amount"
-        }
-      },
-      "required": [
-        "glAccount",
-        "date",
-        "amount"
-      ]
-    }
-  }
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.1",
+		"title": "Nintex-New",
+		"description": "Nintex-New"
+	},
+	"externalDocs": {
+		"url": "http://88.209.161.120:50000"
+	},
+	"host": "88.209.161.120:50000",
+	"schemes": [
+		"http"
+	],
+	"basePath": "/RESTAdapter",
+	"paths": {
+		"/nintex_integration": {
+			"post": {
+				"summary": "Test Posting",
+				"consumes": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Message"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"schema": {
+								"$ref": "#/definitions/Response"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Message": {
+			"type": "object",
+			"properties": {
+				"glAccount": {
+					"type": "string",
+					"description": "GL Account"
+				},
+				"date": {
+					"type": "string",
+					"description": "Date - DD.MM.YYYY"
+				},
+				"amount": {
+					"type": "string",
+					"description": "Amount"
+				}
+			},
+			"required": [
+				"glAccount",
+				"date",
+				"amount"
+			]
+		},
+		"Response": {
+			"type": "object",
+			"properties": {
+				"status": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		}
+	}
 }
