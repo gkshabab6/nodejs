@@ -32,7 +32,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "OK",
+						"description": "Hello",
 						"schema": {
 							"schema": {
 								"$ref": "#/definitions/Response"
