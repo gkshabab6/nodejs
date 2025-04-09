@@ -12,7 +12,7 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/RESTAdapter",
+  "basePath": "/nintex_integration",
   "paths": {
     "/nintex_integration": {
       "post": {
