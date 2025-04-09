@@ -6,11 +6,11 @@
     "description": "Nintex-New"
   },
   "externalDocs": {
-    "url": "https://88.209.161.120:50000"
+    "url": "http://88.209.161.120:50000"
   },
   "host": "88.209.161.120:50000",
   "schemes": [
-    "https"
+    "http"
   ],
   "basePath": "/RESTAdapter",
   "paths": {
