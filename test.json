@@ -51,9 +51,7 @@
 					"201": {
 						"description": "Success",
 						"schema": {
-							
-								"$ref": "#/definitions/Response"
-							
+							"$ref": "#/definitions/Response"
 						}
 					}
 				}
