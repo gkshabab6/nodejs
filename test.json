@@ -6,13 +6,13 @@
     "description": "Ninetex-Shabab"
   },
   "externalDocs": {
-    "url": "https://88.209.161.120:50000/RESTAdapter"
+    "url": "https://88.209.161.120:50000"
   },
   "host": "88.209.161.120:50000",
   "schemes": [
     "https"
   ],
-  "basePath": "/nintex_integration",
+  "basePath": "/RESTAdapter",
   "paths": {
     "/nintex_integration": {
       "post": {
