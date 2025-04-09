@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
-    "title": "Ninetex-Shabab",
-    "description": "Ninetex-Shabab"
+    "version": "1.0.1",
+    "title": "Nintex-New",
+    "description": "Nintex-New"
   },
   "externalDocs": {
     "url": "https://88.209.161.120:50000"
