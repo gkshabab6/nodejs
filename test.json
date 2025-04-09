@@ -12,6 +12,12 @@
 	"schemes": [
 		"http"
 	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
 	"basePath": "/RESTAdapter",
 	"paths": {
 		"/nintex_integration": {
@@ -24,15 +30,26 @@
 					{
 						"in": "body",
 						"name": "body",
-						"required": true,
+						"required": false,
+						"description": "",
 						"schema": {
 							"$ref": "#/definitions/Message"
 						}
+					},
+					{
+						"name": "Content-Type",
+						"in": "header",
+						"required": false,
+						"enum": [
+							"application/json"
+						],
+						"type": "string",
+						"description": ""
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Hello",
+						"description": "Success",
 						"schema": {
 							"schema": {
 								"$ref": "#/definitions/Response"
@@ -67,6 +84,7 @@
 			]
 		},
 		"Response": {
+			"title": "Response",
 			"type": "object",
 			"properties": {
 				"status": {
