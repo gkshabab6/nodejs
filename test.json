@@ -48,12 +48,12 @@
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "Success",
 						"schema": {
-							"schema": {
+							
 								"$ref": "#/definitions/Response"
-							}
+							
 						}
 					}
 				}
