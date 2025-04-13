@@ -48,7 +48,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Sample"
+              "$ref": "#/definitions/Sucess"
             },
             "examples": {
               "application/json": {
@@ -66,35 +66,20 @@
                   }
                 ]
               }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error2"
             },
-            "headers": {
-              "server": {
-                "type": "string",
-                "default": "SAP NetWeaver Application Server 7.53 / AS Java 7.50"
-              },
-              "x-frame-options": {
-                "type": "string",
-                "default": "DENY"
-              },
-              "x-content-type-options": {
-                "type": "string",
-                "default": "nosniff"
-              },
-              "cache-control": {
-                "type": "string",
-                "default": "no-store"
-              },
-              "content-type": {
-                "type": "string",
-                "default": "application/json; charset=UTF-8"
-              },
-              "content-length": {
-                "type": "string",
-                "default": "157"
-              },
-              "date": {
-                "type": "string",
-                "default": "Sun, 13 Apr 2025 08:28:04 GMT"
+            "examples": {
+              "application/json": {
+                "error": {
+                  "code": "500",
+                  "message": "Error",
+                  "logID": "C000AC110F0B8DC0000000A00013DF47"
+                }
               }
             }
           }
@@ -294,8 +279,8 @@
         "assignment"
       ]
     },
-    "Sample": {
-      "title": "Sample",
+    "Sucess": {
+      "title": "Sucess",
       "example": {
         "requestID": 12345,
         "status": "S",
@@ -361,6 +346,50 @@
       },
       "required": [
         "message"
+      ]
+    },
+    "Error1": {
+      "title": "Error1",
+      "example": {
+        "code": "500",
+        "message": "Error",
+        "logID": "C000AC110F0B8DC0000000A00013DF47"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "logID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "logID"
+      ]
+    },
+    "Error2": {
+      "title": "Error2",
+      "example": {
+        "error": {
+          "code": "500",
+          "message": "Error while sending message to module processor&#x3a  Sender Channel  CC_NINTEX_PETTYtarget-field mapping fulfils the requirement of the target XSD",
+          "logID": "C000AC110F0B8DC0000000A00013DF47"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/Error1"
+        }
+      },
+      "required": [
+        "error"
       ]
     }
   },
