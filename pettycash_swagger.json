@@ -1,0 +1,374 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Nintex_new",
+    "contact": {}
+  },
+  "host": "88.209.161.120:50000",
+  "basePath": "/RESTAdapter/nintex_integration",
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/pettycash": {
+      "post": {
+        "summary": "PetyCash",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "PetyCash",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PetyCashRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Sample"
+            },
+            "examples": {
+              "application/json": {
+                "requestID": 12345,
+                "status": "S",
+                "companyCode": 2000,
+                "documentNo": 256585,
+                "year": 2025,
+                "message": [
+                  {
+                    "message": "DATA received"
+                  },
+                  {
+                    "message": "Give You a Response"
+                  }
+                ]
+              }
+            },
+            "headers": {
+              "server": {
+                "type": "string",
+                "default": "SAP NetWeaver Application Server 7.53 / AS Java 7.50"
+              },
+              "x-frame-options": {
+                "type": "string",
+                "default": "DENY"
+              },
+              "x-content-type-options": {
+                "type": "string",
+                "default": "nosniff"
+              },
+              "cache-control": {
+                "type": "string",
+                "default": "no-store"
+              },
+              "content-type": {
+                "type": "string",
+                "default": "application/json; charset=UTF-8"
+              },
+              "content-length": {
+                "type": "string",
+                "default": "157"
+              },
+              "date": {
+                "type": "string",
+                "default": "Sun, 13 Apr 2025 08:28:04 GMT"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PetyCashRequest": {
+      "title": "PetyCashRequest",
+      "example": {
+        "HEADER": {
+          "requestID": "12345",
+          "reqUser": "shabab.kunjumoideen@tanmiah.com",
+          "company": "2000",
+          "plant": "2101",
+          "currency": "SAR",
+          "reqDate": "2025-04-01",
+          "postDate": "2025-04-01",
+          "justification": "Testing data",
+          "Simultaion": "X"
+        },
+        "ITEM": [
+          {
+            "itemNo": 1,
+            "pstKey": "40",
+            "glAcoount": "420130",
+            "capexNo": "",
+            "costCenter": "2030550110",
+            "empNo": "",
+            "VATtype": "V5",
+            "amount": "100",
+            "text": "PCV#01674//food expenses for placment day",
+            "assignment": "2030550110"
+          },
+          {
+            "itemNo": 2,
+            "pstKey": "40",
+            "glAcoount": "461003",
+            "capexNo": "",
+            "costCenter": "",
+            "empNo": "4483",
+            "VATtype": "V5",
+            "amount": "100",
+            "text": "PCV#01674//food expenses for placment day",
+            "assignment": ""
+          },
+          {
+            "itemNo": 3,
+            "pstKey": "34",
+            "glAcoount": "EM00004483",
+            "capexNo": " ",
+            "costCenter": " ",
+            "empNo": " ",
+            "VATtype": "V5",
+            "amount": "200",
+            "text": "petty cash rembustement PCV#1673",
+            "assignment": " "
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "HEADER": {
+          "$ref": "#/definitions/HEADER"
+        },
+        "ITEM": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ITEM"
+          }
+        }
+      },
+      "required": [
+        "HEADER",
+        "ITEM"
+      ]
+    },
+    "HEADER": {
+      "title": "HEADER",
+      "example": {
+        "requestID": "12345",
+        "reqUser": "shabab.kunjumoideen@tanmiah.com",
+        "company": "2000",
+        "plant": "2101",
+        "currency": "SAR",
+        "reqDate": "2025-04-01",
+        "postDate": "2025-04-01",
+        "justification": "Testing data",
+        "Simultaion": "X"
+      },
+      "type": "object",
+      "properties": {
+        "requestID": {
+          "type": "string"
+        },
+        "reqUser": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "reqDate": {
+          "type": "string"
+        },
+        "postDate": {
+          "type": "string"
+        },
+        "justification": {
+          "type": "string"
+        },
+        "Simultaion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestID",
+        "reqUser",
+        "company",
+        "plant",
+        "currency",
+        "reqDate",
+        "postDate",
+        "justification",
+        "Simultaion"
+      ]
+    },
+    "ITEM": {
+      "title": "ITEM",
+      "example": {
+        "itemNo": 1,
+        "pstKey": "40",
+        "glAcoount": "420130",
+        "capexNo": "",
+        "costCenter": "2030550110",
+        "empNo": "",
+        "VATtype": "V5",
+        "amount": "100",
+        "text": "PCV#01674//food expenses for placment day",
+        "assignment": "2030550110"
+      },
+      "type": "object",
+      "properties": {
+        "itemNo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pstKey": {
+          "type": "string"
+        },
+        "glAcoount": {
+          "type": "string"
+        },
+        "capexNo": {
+          "type": "string"
+        },
+        "costCenter": {
+          "type": "string"
+        },
+        "empNo": {
+          "type": "string"
+        },
+        "VATtype": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "assignment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "itemNo",
+        "pstKey",
+        "glAcoount",
+        "capexNo",
+        "costCenter",
+        "empNo",
+        "VATtype",
+        "amount",
+        "text",
+        "assignment"
+      ]
+    },
+    "Sample": {
+      "title": "Sample",
+      "example": {
+        "requestID": 12345,
+        "status": "S",
+        "companyCode": 2000,
+        "documentNo": 256585,
+        "year": 2025,
+        "message": [
+          {
+            "message": "DATA received"
+          },
+          {
+            "message": "Give You a Response"
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "requestID": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        },
+        "companyCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "documentNo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        }
+      },
+      "required": [
+        "requestID",
+        "status",
+        "companyCode",
+        "documentNo",
+        "year",
+        "message"
+      ]
+    },
+    "Message": {
+      "title": "Message",
+      "example": {
+        "message": "DATA received"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
