@@ -48,21 +48,21 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Sucess"
+              "$ref": "#/definitions/NewRequest"
             },
             "examples": {
               "application/json": {
                 "requestID": 12345,
                 "status": "S",
                 "companyCode": 2000,
-                "documentNo": 256585,
+                "documentNo": 200000045,
                 "year": 2025,
                 "message": [
                   {
-                    "message": "DATA received"
+                    "message": "Document Posted Sucessfully"
                   },
                   {
-                    "message": "Give You a Response"
+                    "message": "Document No : 0200000045  Posted"
                   }
                 ]
               }
@@ -102,47 +102,54 @@
           "company": "2000",
           "plant": "2101",
           "currency": "SAR",
-          "reqDate": "2025-04-01",
-          "postDate": "2025-04-01",
+          "reqDate": "20250401",
+          "postDate": "20250401",
           "justification": "Testing data",
-          "Simultaion": "X"
+          "Simultaion": ""
         },
         "ITEM": [
           {
             "itemNo": 1,
             "pstKey": "40",
-            "glAcoount": "420130",
+            "glAccount": "420130",
             "capexNo": "",
             "costCenter": "2030550110",
             "empNo": "",
-            "VATtype": "V5",
+            "VATtype": "V7",
             "amount": "100",
             "text": "PCV#01674//food expenses for placment day",
-            "assignment": "2030550110"
+            "assignment": "2030550110",
+            "quantity": 1,
+            "unit": "EA",
+            "orderno": ""
           },
           {
             "itemNo": 2,
             "pstKey": "40",
-            "glAcoount": "461003",
+            "glAccount": "461003",
             "capexNo": "",
-            "costCenter": "",
+            "costCenter": "2030550110",
             "empNo": "4483",
-            "VATtype": "V5",
+            "VATtype": "V7",
             "amount": "100",
             "text": "PCV#01674//food expenses for placment day",
-            "assignment": ""
+            "assignment": "",
+            "quantity": 1,
+            "unit": "EA",
+            "orderno": ""
           },
           {
             "itemNo": 3,
             "pstKey": "34",
-            "glAcoount": "EM00004483",
+            "glAccount": "EM00004483",
             "capexNo": " ",
             "costCenter": " ",
             "empNo": " ",
-            "VATtype": "V5",
+            "VATtype": "V7",
             "amount": "200",
             "text": "petty cash rembustement PCV#1673",
-            "assignment": " "
+            "assignment": " ",
+            "orderno": ""
           }
         ]
       },
@@ -171,10 +178,10 @@
         "company": "2000",
         "plant": "2101",
         "currency": "SAR",
-        "reqDate": "2025-04-01",
-        "postDate": "2025-04-01",
+        "reqDate": "20250401",
+        "postDate": "20250401",
         "justification": "Testing data",
-        "Simultaion": "X"
+        "Simultaion": ""
       },
       "type": "object",
       "properties": {
@@ -223,14 +230,16 @@
       "example": {
         "itemNo": 1,
         "pstKey": "40",
-        "glAcoount": "420130",
+        "glAccount": "420130",
         "capexNo": "",
         "costCenter": "2030550110",
         "empNo": "",
-        "VATtype": "V5",
+        "VATtype": "V7",
         "amount": "100",
         "text": "PCV#01674//food expenses for placment day",
-        "assignment": "2030550110"
+        "assignment": "2030550110",
+        "quantity": 1,
+        "unit": "EA"
       },
       "type": "object",
       "properties": {
@@ -241,7 +250,7 @@
         "pstKey": {
           "type": "string"
         },
-        "glAcoount": {
+        "glAccount": {
           "type": "string"
         },
         "capexNo": {
@@ -264,35 +273,86 @@
         },
         "assignment": {
           "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "orderno": {
+          "type": "string"
         }
       },
       "required": [
         "itemNo",
         "pstKey",
-        "glAcoount",
-        "capexNo",
+        "glAccount",
         "costCenter",
-        "empNo",
         "VATtype",
         "amount",
-        "text",
-        "assignment"
+        "text"
       ]
     },
-    "Sucess": {
-      "title": "Sucess",
+    "Error1": {
+      "title": "Error1",
+      "example": {
+        "code": "500",
+        "message": "Error",
+        "logID": "C000AC110F0B8DC0000000A00013DF47"
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "logID": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "logID"
+      ]
+    },
+    "Error2": {
+      "title": "Error2",
+      "example": {
+        "error": {
+          "code": "500",
+          "message": "Error",
+          "logID": "C000AC110F0B8DC0000000A00013DF47"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/Error1"
+        }
+      },
+      "required": [
+        "error"
+      ]
+    },
+    "NewRequest": {
+      "title": "NewRequest",
       "example": {
         "requestID": 12345,
         "status": "S",
         "companyCode": 2000,
-        "documentNo": 256585,
+        "documentNo": 200000045,
         "year": 2025,
         "message": [
           {
-            "message": "DATA received"
+            "message": "Document Posted Sucessfully"
           },
           {
-            "message": "Give You a Response"
+            "message": "Document No : 0200000045  Posted"
           }
         ]
       },
@@ -327,16 +387,13 @@
       "required": [
         "requestID",
         "status",
-        "companyCode",
-        "documentNo",
-        "year",
         "message"
       ]
     },
     "Message": {
       "title": "Message",
       "example": {
-        "message": "DATA received"
+        "message": "Document Posted Sucessfully"
       },
       "type": "object",
       "properties": {
@@ -346,50 +403,6 @@
       },
       "required": [
         "message"
-      ]
-    },
-    "Error1": {
-      "title": "Error1",
-      "example": {
-        "code": "500",
-        "message": "Error",
-        "logID": "C000AC110F0B8DC0000000A00013DF47"
-      },
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "logID": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "code",
-        "message",
-        "logID"
-      ]
-    },
-    "Error2": {
-      "title": "Error2",
-      "example": {
-        "error": {
-          "code": "500",
-          "message": "Error while sending message to module processor&#x3a  Sender Channel  CC_NINTEX_PETTYtarget-field mapping fulfils the requirement of the target XSD",
-          "logID": "C000AC110F0B8DC0000000A00013DF47"
-        }
-      },
-      "type": "object",
-      "properties": {
-        "error": {
-          "$ref": "#/definitions/Error1"
-        }
-      },
-      "required": [
-        "error"
       ]
     }
   },
