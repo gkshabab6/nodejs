@@ -25,11 +25,6 @@
     "/pettycash": {
       "post": {
         "summary": "PettyCash",
-        "tags": [
-          "Misc"
-        ],
-        "operationId": "PetyCash",
-        "deprecated": false,
         "produces": [
           "application/json"
         ],
