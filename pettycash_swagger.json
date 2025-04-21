@@ -24,7 +24,7 @@
   "paths": {
     "/pettycash": {
       "post": {
-        "summary": "PetyCash",
+        "summary": "PettyCash",
         "tags": [
           "Misc"
         ],
@@ -48,37 +48,20 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/NewRequest"
-            },
-            "examples": {
-              "application/json": {
-                "requestID": 12345,
-                "status": "S",
-                "companyCode": 2000,
-                "documentNo": 200000045,
-                "year": 2025,
-                "message": [
-                  {
-                    "message": "Document Posted Sucessfully"
-                  },
-                  {
-                    "message": "Document No : 0200000045  Posted"
-                  }
-                ]
-              }
+              "$ref": "#/definitions/response"
             }
           },
           "500": {
             "description": "Internal Server Error",
             "schema": {
-              "$ref": "#/definitions/Error2"
+              "$ref": "#/definitions/Error"
             },
             "examples": {
               "application/json": {
                 "error": {
                   "code": "500",
                   "message": "Error",
-                  "logID": "C000AC110F0B8DC0000000A00013DF47"
+                  "logID": "C000AC1"
                 }
               }
             }
@@ -94,65 +77,7 @@
   },
   "definitions": {
     "PetyCashRequest": {
-      "title": "PetyCashRequest",
-      "example": {
-        "HEADER": {
-          "requestID": "12345",
-          "reqUser": "shabab.kunjumoideen@tanmiah.com",
-          "company": "2000",
-          "plant": "2101",
-          "currency": "SAR",
-          "reqDate": "20250401",
-          "postDate": "20250401",
-          "justification": "Testing data",
-          "Simultaion": ""
-        },
-        "ITEM": [
-          {
-            "itemNo": 1,
-            "pstKey": "40",
-            "glAccount": "420130",
-            "capexNo": "",
-            "costCenter": "2030550110",
-            "empNo": "",
-            "VATtype": "V7",
-            "amount": "100",
-            "text": "PCV#01674//food expenses for placment day",
-            "assignment": "2030550110",
-            "quantity": 1,
-            "unit": "EA",
-            "orderno": ""
-          },
-          {
-            "itemNo": 2,
-            "pstKey": "40",
-            "glAccount": "461003",
-            "capexNo": "",
-            "costCenter": "2030550110",
-            "empNo": "4483",
-            "VATtype": "V7",
-            "amount": "100",
-            "text": "PCV#01674//food expenses for placment day",
-            "assignment": "",
-            "quantity": 1,
-            "unit": "EA",
-            "orderno": ""
-          },
-          {
-            "itemNo": 3,
-            "pstKey": "34",
-            "glAccount": "EM00004483",
-            "capexNo": " ",
-            "costCenter": " ",
-            "empNo": " ",
-            "VATtype": "V7",
-            "amount": "200",
-            "text": "petty cash rembustement PCV#1673",
-            "assignment": " ",
-            "orderno": ""
-          }
-        ]
-      },
+      "title": "Request",
       "type": "object",
       "properties": {
         "HEADER": {
@@ -172,17 +97,6 @@
     },
     "HEADER": {
       "title": "HEADER",
-      "example": {
-        "requestID": "12345",
-        "reqUser": "shabab.kunjumoideen@tanmiah.com",
-        "company": "2000",
-        "plant": "2101",
-        "currency": "SAR",
-        "reqDate": "20250401",
-        "postDate": "20250401",
-        "justification": "Testing data",
-        "Simultaion": ""
-      },
       "type": "object",
       "properties": {
         "requestID": {
@@ -227,20 +141,6 @@
     },
     "ITEM": {
       "title": "ITEM",
-      "example": {
-        "itemNo": 1,
-        "pstKey": "40",
-        "glAccount": "420130",
-        "capexNo": "",
-        "costCenter": "2030550110",
-        "empNo": "",
-        "VATtype": "V7",
-        "amount": "100",
-        "text": "PCV#01674//food expenses for placment day",
-        "assignment": "2030550110",
-        "quantity": 1,
-        "unit": "EA"
-      },
       "type": "object",
       "properties": {
         "itemNo": {
@@ -295,67 +195,20 @@
         "text"
       ]
     },
-    "Error1": {
-      "title": "Error1",
-      "example": {
-        "code": "500",
-        "message": "Error",
-        "logID": "C000AC110F0B8DC0000000A00013DF47"
-      },
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "logID": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "code",
-        "message",
-        "logID"
-      ]
-    },
-    "Error2": {
-      "title": "Error2",
-      "example": {
-        "error": {
-          "code": "500",
-          "message": "Error",
-          "logID": "C000AC110F0B8DC0000000A00013DF47"
-        }
-      },
+    "Error": {
+      "title": "Error",
       "type": "object",
       "properties": {
         "error": {
-          "$ref": "#/definitions/Error1"
+          "$ref": "#/definitions/Error"
         }
       },
       "required": [
         "error"
       ]
     },
-    "NewRequest": {
-      "title": "NewRequest",
-      "example": {
-        "requestID": 12345,
-        "status": "S",
-        "companyCode": 2000,
-        "documentNo": 200000045,
-        "year": 2025,
-        "message": [
-          {
-            "message": "Document Posted Sucessfully"
-          },
-          {
-            "message": "Document No : 0200000045  Posted"
-          }
-        ]
-      },
+    "response": {
+      "title": "Response",
       "type": "object",
       "properties": {
         "requestID": {
@@ -391,10 +244,7 @@
       ]
     },
     "Message": {
-      "title": "Message",
-      "example": {
-        "message": "Document Posted Sucessfully"
-      },
+      "title": "Message inside Response",
       "type": "object",
       "properties": {
         "message": {
