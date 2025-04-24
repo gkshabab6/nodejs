@@ -1,0 +1,192 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Nintex_Master",
+    "contact": {}
+  },
+  "host": "88.209.161.120:50000",
+  "basePath": "/RESTAdapter/nintex_integration",
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/master": {
+      "post": {
+        "summary": "Master Data",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/master_req"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "examples": {
+              "application/json": {
+                "error": {
+                  "code": "500",
+                  "message": "Error",
+                  "logID": "C000AC1"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "master_req": {
+      "title": "Request",
+      "type": "object",
+      "properties": {
+        "dummy": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "title": "Error",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "required": [
+        "error"
+      ]
+    },
+    "response": {
+      "title": "Response",
+      "type": "object",
+      "properties": {
+        "Empvendor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/emp"
+          }
+        },
+        "Plant": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/plant"
+          }
+        },
+        "Company": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/company"
+          }
+        },
+        "CostCenter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cost"
+          }
+        }
+      },
+      "required": [
+        "requestID",
+        "status",
+        "message"
+      ]
+    },
+    "emp": {
+      "title": "Employee Vendor",
+      "type": "object",
+      "properties": {
+        "Empno": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "plant": {
+      "title": "Plant",
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Ccode": {
+          "type": "string"
+        }
+      }
+    },
+    "cost": {
+      "title": "Cost Center",
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Ccode": {
+          "type": "string"
+        }
+      }
+    },
+    "company": {
+      "title": "Company",
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
