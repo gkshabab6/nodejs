@@ -114,8 +114,6 @@
 		"plant": {
 			"title": "Plant",
 			"type": "object",
-			"maxItems" : 500,
-			"minItems" : 0,
 			"properties": {
 				"CODE": {
 					"type": "string"
@@ -157,6 +155,8 @@
 				},
 				"PLANT": {
 					"type": "array",
+					"maxItems" : 500,
+					"minItems" : 0,
 					"items": {
 						"$ref": "#/definitions/plant"
 					}
