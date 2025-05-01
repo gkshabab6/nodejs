@@ -121,6 +121,8 @@
 				},
 				"COSTCENTER": {
 					"type": "array",
+					"maxItems" : 50,
+					"minItems" : 0,
 					"items": {
 						"$ref": "#/definitions/cost"
 					}
@@ -129,7 +131,7 @@
 		},
 		"cost": {
 			"title": "Cost Center",
-			"type": "object",
+			"type": "object",			 
 			"properties": {
 				"CODE": {
 					"type": "string"
