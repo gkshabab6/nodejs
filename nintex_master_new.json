@@ -143,6 +143,18 @@
 				}
 			}
 		},
+		"EMPVENDOR": {
+			"title": "Employee Vendor",
+			"type": "object",			 
+			"properties": {
+				"CODE": {
+					"type": "string"
+				},
+				"NAME": {
+					"type": "string"
+				}
+			}
+		}
 		"company": {
 			"title": "Company",
 			"type": "object",
@@ -159,6 +171,14 @@
 					"minItems" : 0,
 					"items": {
 						"$ref": "#/definitions/plant"
+					}
+				},
+				"EMPVENDOR":{
+					"type": "array",
+					"maxItems" : 500,
+					"minItems" : 0,
+					"items": {
+						"$ref": "#/definitions/EMPVENDOR"
 					}
 				}
 			}
