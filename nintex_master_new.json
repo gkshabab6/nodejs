@@ -98,6 +98,8 @@
 			"properties": {
 				"COMPANY": {
 					"type": "array",
+					"maxItems" : 20,
+					"minItems" : 1,
 					"items": {
 						"$ref": "#/definitions/company"
 					}
@@ -112,6 +114,8 @@
 		"plant": {
 			"title": "Plant",
 			"type": "object",
+			"maxItems" : 500,
+			"minItems" : 0,
 			"properties": {
 				"CODE": {
 					"type": "string"
