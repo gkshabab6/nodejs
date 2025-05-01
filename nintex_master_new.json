@@ -32,7 +32,7 @@
 					{
 						"name": "Body",
 						"in": "body",
-						"required": true,
+						"required": false,
 						"description": "",
 						"schema": {
 							"$ref": "#/definitions/master_req"
