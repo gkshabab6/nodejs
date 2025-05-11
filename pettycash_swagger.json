@@ -120,6 +120,9 @@
         },
         "Simultaion": {
           "type": "string"
+        },
+        "empVendor": {
+          "type": "string"
         }
       },
       "required": [
