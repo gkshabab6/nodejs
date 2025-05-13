@@ -143,6 +143,9 @@
 			"title": "Employee Vendor",
 			"type": "object",
 			"properties": {
+				"ID": {
+					"type": "string"
+				},
 				"Ccode": {
 					"type": "string"
 				},
@@ -166,6 +169,51 @@
 				},
 				"Name": {
 					"type": "string"
+				},
+				"Farm_id": {
+					"type": "string"
+				},
+				"Farm_name": {
+					"type": "string"
+				},
+				"Farm_email": {
+					"type": "string"
+				},
+				"area_id": {
+					"type": "string"
+				},
+				"area_name": {
+					"type": "string"
+				},
+				"area_email": {
+					"type": "string"
+				},
+				"div_id": {
+					"type": "string"
+				},
+				"div_name": {
+					"type": "string"
+				},
+				"div_email": {
+					"type": "string"
+				},
+				"zonal_id": {
+					"type": "string"
+				},
+				"zonal_name": {
+					"type": "string"
+				},
+				"zonal_email": {
+					"type": "string"
+				},
+				"reg_id": {
+					"type": "string"
+				},
+				"reg_name": {
+					"type": "string"
+				},
+				"reg_email": {
+					"type": "string"
 				}
 			}
 		},
@@ -185,6 +233,9 @@
 			"title": "Cost Center",
 			"type": "object",
 			"properties": {
+				"ID": {
+					"type": "string"
+				},
 				"Ccode": {
 					"type": "string"
 				},
