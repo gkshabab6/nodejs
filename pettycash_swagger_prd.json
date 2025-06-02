@@ -1,0 +1,264 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Nintex_new",
+    "contact": {}
+  },
+  "host": "88.209.161.120:50000",
+  "basePath": "/RESTAdapter/nintex_integration",
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/pettycash": {
+      "post": {
+        "summary": "PettyCash",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PetyCashRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "examples": {
+              "application/json": {
+                "error": {
+                  "code": "500",
+                  "message": "Error",
+                  "logID": "C000AC1"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PetyCashRequest": {
+      "title": "Request",
+      "type": "object",
+      "properties": {
+        "HEADER": {
+          "$ref": "#/definitions/HEADER"
+        },
+        "ITEM": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ITEM"
+          }
+        }
+      },
+      "required": [
+        "HEADER",
+        "ITEM"
+      ]
+    },
+    "HEADER": {
+      "title": "HEADER",
+      "type": "object",
+      "properties": {
+        "requestID": {
+          "type": "string"
+        },
+        "reqUser": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "reqDate": {
+          "type": "string"
+        },
+        "postDate": {
+          "type": "string"
+        },
+        "justification": {
+          "type": "string"
+        },
+        "Simultaion": {
+          "type": "string"
+        },
+        "empVendor": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "requestID",
+        "reqUser",
+        "company",
+        "plant",
+        "currency",
+        "reqDate",
+        "postDate",
+        "justification",
+        "Simultaion"
+      ]
+    },
+    "ITEM": {
+      "title": "ITEM",
+      "type": "object",
+      "properties": {
+        "itemNo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pstKey": {
+          "type": "string"
+        },
+        "glAccount": {
+          "type": "string"
+        },
+        "capexNo": {
+          "type": "string"
+        },
+        "costCenter": {
+          "type": "string"
+        },
+        "empNo": {
+          "type": "string"
+        },
+        "VATtype": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "assignment": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "orderno": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "itemNo",
+        "pstKey",
+        "glAccount",
+        "costCenter",
+        "VATtype",
+        "amount",
+        "text"
+      ]
+    },
+    "Error": {
+      "title": "Error",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/Error"
+        }
+      },
+      "required": [
+        "error"
+      ]
+    },
+    "response": {
+      "title": "Response",
+      "type": "object",
+      "properties": {
+        "requestID": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "string"
+        },
+        "companyCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "documentNo": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        }
+      },
+      "required": [
+        "requestID",
+        "status",
+        "message"
+      ]
+    },
+    "Message": {
+      "title": "Message inside Response",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
