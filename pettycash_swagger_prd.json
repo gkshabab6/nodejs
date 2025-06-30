@@ -5,7 +5,7 @@
     "title": "Nintex_new",
     "contact": {}
   },
-  "host": "88.209.161.105:50000",
+  "host": "88.209.161.122:50000",
   "basePath": "/RESTAdapter/nintex_integration",
   "securityDefinitions": {
     "basic": {
