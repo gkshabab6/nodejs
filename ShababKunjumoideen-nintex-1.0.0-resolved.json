@@ -4,7 +4,7 @@ info:
   title: "Nitex Integration"
   description: API for demonstrating Swagger 2.x descriptor
 externalDocs:
-  url: "https://88.209.161.120:50000/RESTAdapter/"
+  url: "https://88.209.162.21:50000/RESTAdapter/"
 host: 88.209.161.120:50000
 schemes:
   - "https"
