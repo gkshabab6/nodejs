@@ -68,9 +68,72 @@
 					}
 				]
 			}
+		},
+		"/material": {
+			"post": {
+				"summary": "Material Master",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/material"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Response_mat"
+						}
+					}
+				}
+			}
 		}
 	},
 	"definitions": {
+		"material": {
+			"title": "Material",
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "string"
+				}
+			}
+		},
+		"Response_mat": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/Stock"
+			}
+		},
+		"Stock": {
+			"title": "Stock",
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "string"
+				},
+				"MATERIALNO": {
+					"type": "string"
+				},
+				"UNIT": {
+					"type": "string"
+				},
+				"DESCRIPTION": {
+					"type": "string"
+				},
+				"ORDERUNIT": {
+					"type": "string"
+				}
+			}
+		},
 		"Password": {
 			"title": "Request",
 			"type": "object",
@@ -103,7 +166,7 @@
 					"type": "string"
 				}
 			}
-		}		
+		}
 	},
 	"security": [],
 	"tags": [
