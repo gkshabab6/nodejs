@@ -108,9 +108,14 @@
 			}
 		},
 		"Response_mat": {
-			"type": "array",
-			"items": {
-				"$ref": "#/definitions/Stock"
+			"type": "object",
+			"properties": {
+				"STOCK": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Stock"
+					}
+				}
 			}
 		},
 		"Stock": {
