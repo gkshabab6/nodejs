@@ -214,7 +214,26 @@
 				},
 				"reg_email": {
 					"type": "string"
-				}
+				},
+				"sacct_id": {
+					"type": "string"
+				},
+				"sacct_email": {
+					"type": "string"
+				},
+				"sacct_name": {
+					"type": "string"
+				},
+				"bracct_id": {
+					"type": "string"
+				},
+				"bracct_name": {
+					"type": "string"
+				},
+				"bracct_email": {
+					"type": "string"
+				},
+				
 			}
 		},
 		"Company": {
