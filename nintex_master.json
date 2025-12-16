@@ -1,313 +1,219 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"version": "1.0",
-		"title": "Nintex_Master",
-		"contact": {}
-	},
-	"host": "88.209.162.21:50000",
-	"basePath": "/RESTAdapter/nintex_integration",
-	"securityDefinitions": {
-		"basic": {
-			"type": "basic"
-		}
-	},
-	"schemes": [
-		"http"
-	],
-	"consumes": [
-		"application/json"
-	],
-	"produces": [
-		"application/json"
-	],
-	"paths": {
-		"/master": {
-			"post": {
-				"summary": "Master Data",
-				"produces": [
-					"application/json"
-				],
-				"parameters": [
-					{
-						"name": "Body",
-						"in": "body",
-						"required": true,
-						"description": "",
-						"schema": {
-							"$ref": "#/definitions/master_req"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"schema": {
-							"$ref": "#/definitions/response"
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"schema": {
-							"$ref": "#/definitions/Error"
-						},
-						"examples": {
-							"application/json": {
-								"error": {
-									"code": "500",
-									"message": "Error",
-									"logID": "C000AC1"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"basic": []
-					}
-				]
-			}
-		}
-	},
-	"definitions": {
-		"master_req": {
-			"title": "Request",
-			"type": "object",
-			"properties": {
-				"dummy": {
-					"type": "string"
-				}
-			}
-		},
-		"Error": {
-			"title": "Error",
-			"type": "object",
-			"properties": {
-				"error": {
-					"$ref": "#/definitions/Error"
-				}
-			},
-			"required": [
-				"error"
-			]
-		},
-		"response": {
-			"title": "Response",
-			"type": "object",
-			"properties": {
-				"Empvendor": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Empvendor"
-					}
-				},
-				"Plant": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Plant"
-					}
-				},
-				"Company": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Company"
-					}
-				},
-				"CostCenter": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/CostCenter"
-					}
-				},
-				"EmployeeNo": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/EmployeeNo"
-					}
-				},
-				"GLAccount": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/GLAccount"
-					}
-				}
-			},
-			"required": [
-				"requestID",
-				"status",
-				"message"
-			]
-		},
-		"Empvendor": {
-			"title": "Employee Vendor",
-			"type": "object",
-			"properties": {
-				"ID": {
-					"type": "string"
-				},
-				"Ccode": {
-					"type": "string"
-				},
-				"Empno": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				}
-			}
-		},
-		"Plant": {
-			"title": "Plant",
-			"type": "object",
-			"properties": {
-				"Ccode": {
-					"type": "string"
-				},
-				"Plantno": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"Farm_id": {
-					"type": "string"
-				},
-				"Farm_name": {
-					"type": "string"
-				},
-				"Farm_email": {
-					"type": "string"
-				},
-				"area_id": {
-					"type": "string"
-				},
-				"area_name": {
-					"type": "string"
-				},
-				"area_email": {
-					"type": "string"
-				},
-				"div_id": {
-					"type": "string"
-				},
-				"div_name": {
-					"type": "string"
-				},
-				"div_email": {
-					"type": "string"
-				},
-				"zonal_id": {
-					"type": "string"
-				},
-				"zonal_name": {
-					"type": "string"
-				},
-				"zonal_email": {
-					"type": "string"
-				},
-				"reg_id": {
-					"type": "string"
-				},
-				"reg_name": {
-					"type": "string"
-				},
-				"reg_email": {
-					"type": "string"
-				},
-				"sacct_id": {
-					"type": "string"
-				},
-				"sacct_email": {
-					"type": "string"
-				},
-				"sacct_name": {
-					"type": "string"
-				},
-				"bracct_id": {
-					"type": "string"
-				},
-				"bracct_name": {
-					"type": "string"
-				},
-				"bracct_email": {
-					"type": "string"
-				},
-				
-			}
-		},
-		"Company": {
-			"title": "Company",
-			"type": "object",
-			"properties": {
-				"Code": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				}
-			}
-		},
-		"CostCenter": {
-			"title": "Cost Center",
-			"type": "object",
-			"properties": {
-				"ID": {
-					"type": "string"
-				},
-				"Ccode": {
-					"type": "string"
-				},
-				"PCode": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				},
-				"CostCenter": {
-					"type": "string"
-				}
-			}
-		},
-		"EmployeeNo": {
-			"title": "Company",
-			"type": "object",
-			"properties": {
-				"Ccode": {
-					"type": "string"
-				},
-				"EmpNo": {
-					"type": "string"
-				},
-				"CostCenter": {
-					"type": "string"
-				},
-				"Name": {
-					"type": "string"
-				}
-			}
-		},
-		"GLAccount": {
-			"title": "Company",
-			"type": "object",
-			"properties": {
-				"item": {
-					"type": "string"
-				},
-				"GLNo": {
-					"type": "string"
-				},
-				"text": {
-					"type": "string"
-				}
-			}
-		}
-	},
-	"security": [],
-	"tags": [
-		{
-			"name": "Misc",
-			"description": ""
-		}
-	]
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Nintex_Master",
+    "description": "Nintex to SAP PI/PO Integration"
+  },
+  "host": "88.209.162.21:50000",
+  "basePath": "/RESTAdapter/nintex_integration",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "basic": []
+    }
+  ],
+
+  "paths": {
+    "/master_new": {
+      "post": {
+        "summary": "Create Master Data",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MasterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MasterResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+
+    "/approval": {
+      "post": {
+        "summary": "Approval Master Data",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MasterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApprovalResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "MasterRequest": {
+      "type": "object",
+      "properties": {
+        "dummy": {
+          "type": "string"
+        }
+      }
+    },
+
+    "MasterResponse": {
+      "type": "object",
+      "required": ["requestID", "status", "message"],
+      "properties": {
+        "requestID": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "COMPANY": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Company"
+          }
+        }
+      }
+    },
+
+    "ApprovalResponse": {
+      "type": "object",
+      "required": ["APPROVALS"],
+      "properties": {
+        "APPROVALS": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Approval"
+          }
+        }
+      }
+    },
+
+    "Approval": {
+      "type": "object",
+      "properties": {
+        "PLANT": {
+          "type": "integer"
+        },
+        "NAME": {
+          "type": "string"
+        },
+        "DEPARTMENT": {
+          "type": "string"
+        },
+        "SUBDEPARTMENT": {
+          "type": "string"
+        },
+        "L1USER": {
+          "type": "string"
+        },
+        "L1NAME": {
+          "type": "string"
+        },
+        "L1EMAIL": {
+          "type": "string"
+        },
+        "L2USER": {
+          "type": "string"
+        },
+        "L2NAME": {
+          "type": "string"
+        },
+        "L2EMAIL": {
+          "type": "string"
+        },
+        "L3USER": {
+          "type": "string"
+        },
+        "F1USER": {
+          "type": "string"
+        },
+        "F1NAME": {
+          "type": "string"
+        },
+        "F1EMAIL": {
+          "type": "string"
+        },
+        "F2USER": {
+          "type": "string"
+        },
+        "F2NAME": {
+          "type": "string"
+        },
+        "F2EMAIL": {
+          "type": "string"
+        },
+        "F3USER": {
+          "type": "string"
+        }
+      }
+    },
+
+    "Company": {
+      "type": "object",
+      "properties": {
+        "CODE": {
+          "type": "string"
+        },
+        "NAME": {
+          "type": "string"
+        }
+      }
+    },
+
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "logID": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
