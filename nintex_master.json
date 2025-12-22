@@ -103,9 +103,16 @@
 		"MasterRequest": {
 			"type": "object",
 			"properties": {
-				"dummy": {
+				"PLANT": {
+					"type": "string"
+				},
+				"DEPART": {
+					"type": "string"
+				},
+				"SUBDEPART": {
 					"type": "string"
 				}
+				
 			}
 		},
 		"ApprovalResponse": {
