@@ -185,7 +185,12 @@
 				},
 				"F3USER": {
 					"type": "string"
-				}
+				},				"F3NAME": {
+					"type": "string"
+				},
+				"F3EMAIL": {
+					"type": "string"
+				},
 			}
 		},
 		"master_req": {
