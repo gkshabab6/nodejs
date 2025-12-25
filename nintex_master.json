@@ -141,7 +141,13 @@
 				"DEPARTMENT": {
 					"type": "string"
 				},
+				"DEP_DESC": {
+					"type": "string"
+				},
 				"SUBDEPARTMENT": {
+					"type": "string"
+				},
+				"SUB_DESC": {
 					"type": "string"
 				},
 				"L1USER": {
