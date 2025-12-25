@@ -165,6 +165,13 @@
 				"L3USER": {
 					"type": "string"
 				},
+				"L3NAME": {
+					"type": "string"
+				},
+				"L3EMAIL": {
+					"type": "string"
+				},
+				
 				"F1USER": {
 					"type": "string"
 				},
