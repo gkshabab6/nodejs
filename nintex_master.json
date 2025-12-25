@@ -238,7 +238,7 @@
 		"DepartmentRequest": {
 			"type": "object",
 			"properties": {
-				"PLANT": {
+				"Plant": {
 					"type": "integer"
 				}
 			}
