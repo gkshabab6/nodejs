@@ -55,6 +55,40 @@
 				]
 			}
 		},
+		"/empcost": {
+			"post": {
+				"summary": "Approval Master Data",
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EmpCostRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/EmpCostResponse"
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"schema": {
+							"$ref": "#/definitions/Error"
+						}
+					}
+				},
+				"security": [
+					{
+						"basic": []
+					}
+				]
+			}
+		},
 		"/approval": {
 			"post": {
 				"summary": "Approval Master Data",
@@ -147,6 +181,62 @@
 				}
 			}
 		},
+		"EmpCostRequest": {
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "string"
+				},
+				"Department": {
+					"type": "string"
+				},
+				"Subdepartment": {
+					"type": "string"
+				},
+				"User": {
+					"type": "string"
+				}
+			}
+		},
+		"EmpCostResponse": {
+			"type": "object",
+			"properties": {
+				"CostCenter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NewCostCenter"
+					}
+				},
+				"EmpVendor": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EmpVendor"
+					}
+				}
+			}
+		},	
+		"NewCostCenter": {
+			"type": "object",
+			"properties": {
+				"Cost": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				}
+			}
+		},	
+		"EmpVendor": {
+			"type": "object",
+			"properties": {
+				"Vendor": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				}
+			}
+		},	
 		"ApprovalResponse": {
 			"type": "object",
 			"properties": {
