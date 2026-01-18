@@ -2,16 +2,10 @@
 	"swagger": "2.0",
 	"info": {
 		"version": "1.0",
-		"title": "Nintex_Master",
-		"contact": {}
+		"title": "Nintex_Master"
 	},
 	"host": "88.209.162.89:50000",
 	"basePath": "/RESTAdapter/nintex_integration",
-	"securityDefinitions": {
-		"basic": {
-			"type": "basic"
-		}
-	},
 	"schemes": [
 		"http"
 	],
@@ -21,19 +15,20 @@
 	"produces": [
 		"application/json"
 	],
+	"securityDefinitions": {
+		"basic": {
+			"type": "basic"
+		}
+	},
 	"paths": {
 		"/master": {
 			"post": {
 				"summary": "Master Data",
-				"produces": [
-					"application/json"
-				],
 				"parameters": [
 					{
 						"name": "Body",
 						"in": "body",
 						"required": true,
-						"description": "",
 						"schema": {
 							"$ref": "#/definitions/master_req"
 						}
@@ -50,15 +45,108 @@
 						"description": "Internal Server Error",
 						"schema": {
 							"$ref": "#/definitions/Error"
-						},
-						"examples": {
-							"application/json": {
-								"error": {
-									"code": "500",
-									"message": "Error",
-									"logID": "C000AC1"
-								}
-							}
+						}
+					}
+				},
+				"security": [
+					{
+						"basic": []
+					}
+				]
+			}
+		},
+		"/empcost": {
+			"post": {
+				"summary": "Approval Master Data",
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/EmpCostRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/EmpCostResponse"
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"schema": {
+							"$ref": "#/definitions/Error"
+						}
+					}
+				},
+				"security": [
+					{
+						"basic": []
+					}
+				]
+			}
+		},
+		"/approval": {
+			"post": {
+				"summary": "Approval Master Data",
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/MasterRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/ApprovalResponse"
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"schema": {
+							"$ref": "#/definitions/Error"
+						}
+					}
+				},
+				"security": [
+					{
+						"basic": []
+					}
+				]
+			}
+		},
+		"/department": {
+			"post": {
+				"summary": "Department and Subdepartment Master",
+				"parameters": [
+					{
+						"name": "Body",
+						"in": "body",
+						"required": false,
+						"schema": {
+							"$ref": "#/definitions/DepartmentRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/DepartmentResponse"
+						}
+					},
+					"500": {
+						"description": "Internal Server Error",
+						"schema": {
+							"$ref": "#/definitions/Error"
 						}
 					}
 				},
@@ -72,7 +160,6 @@
 	},
 	"definitions": {
 		"master_req": {
-			"title": "Request",
 			"type": "object",
 			"properties": {
 				"dummy": {
@@ -80,17 +167,219 @@
 				}
 			}
 		},
-		"Error": {
-			"title": "Error",
+		"MasterRequest": {
 			"type": "object",
 			"properties": {
-				"error": {
-					"$ref": "#/definitions/Error"
+				"PLANT": {
+					"type": "string"
+				},
+				"DEPART": {
+					"type": "string"
+				},
+				"SUBDEPART": {
+					"type": "string"
 				}
-			},
-			"required": [
-				"error"
-			]
+			}
+		},
+		"EmpCostRequest": {
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "string"
+				},
+				"Department": {
+					"type": "string"
+				},
+				"Subdepartment": {
+					"type": "string"
+				},
+				"User": {
+					"type": "string"
+				}
+			}
+		},
+		"EmpCostResponse": {
+			"type": "object",
+			"properties": {
+				"CostCenter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NewCostCenter"
+					}
+				},
+				"EmpVendor": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EmpVendor"
+					}
+				}
+			}
+		},	
+		"NewCostCenter": {
+			"type": "object",
+			"properties": {
+				"Cost": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				}
+			}
+		},	
+		"EmpVendor": {
+			"type": "object",
+			"properties": {
+				"Vendor": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				}
+			}
+		},	
+		"ApprovalResponse": {
+			"type": "object",
+			"properties": {
+				"APPROVALS": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Approval"
+					}
+				}
+			}
+		},
+		"Approval": {
+			"type": "object",
+			"properties": {
+				"PLANT": {
+					"type": "integer"
+				},
+				"NAME": {
+					"type": "string"
+				},
+				"DEPARTMENT": {
+					"type": "string"
+				},
+				"DEP_DESC": {
+					"type": "string"
+				},
+				"SUBDEPARTMENT": {
+					"type": "string"
+				},
+				"SUB_DESC": {
+					"type": "string"
+				},
+				"L1USER": {
+					"type": "string"
+				},
+				"L1NAME": {
+					"type": "string"
+				},
+				"L1EMAIL": {
+					"type": "string"
+				},
+				"L2USER": {
+					"type": "string"
+				},
+				"L2NAME": {
+					"type": "string"
+				},
+				"L2EMAIL": {
+					"type": "string"
+				},
+				"L3USER": {
+					"type": "string"
+				},
+				"L3NAME": {
+					"type": "string"
+				},
+				"L3EMAIL": {
+					"type": "string"
+				},
+				"F1USER": {
+					"type": "string"
+				},
+				"F1NAME": {
+					"type": "string"
+				},
+				"F1EMAIL": {
+					"type": "string"
+				},
+				"F2USER": {
+					"type": "string"
+				},
+				"F2NAME": {
+					"type": "string"
+				},
+				"F2EMAIL": {
+					"type": "string"
+				},
+				"F3USER": {
+					"type": "string"
+				},
+				"F3NAME": {
+					"type": "string"
+				},
+				"F3EMAIL": {
+					"type": "string"
+				}
+			}
+		},
+		"DepartmentRequest": {
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "integer"
+				},
+				"Department": {
+					"type": "string"
+				}
+			}
+		},
+		"DepartmentResponse": {
+			"type": "object",
+			"properties": {
+				"DEPARTMENT": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Department"
+					}
+				},
+				"SUBDEPARTMENT": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SubDepartment"
+					}
+				}
+			}
+		},
+		"Department": {
+			"type": "object",
+			"properties": {
+				"Plant": {
+					"type": "integer"
+				},
+				"DEPAR": {
+					"type": "string"
+				},
+				"DESCRIPTION": {
+					"type": "string"
+				}
+			}
+		},
+		"SubDepartment": {
+			"type": "object",
+			"properties": {
+				"DEPAR": {
+					"type": "string"
+				},
+				"SUBDEP": {
+					"type": "string"
+				},
+				"DESCRIPTION": {
+					"type": "string"
+				}
+			}
 		},
 		"response": {
 			"title": "Response",
@@ -232,7 +521,7 @@
 				},
 				"bracct_email": {
 					"type": "string"
-				},
+				}
 			}
 		},
 		"Company": {
@@ -300,13 +589,17 @@
 					"type": "string"
 				}
 			}
+		},
+		"Error": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
 		}
-	},
-	"security": [],
-	"tags": [
-		{
-			"name": "Misc",
-			"description": ""
-		}
-	]
+	}
 }
