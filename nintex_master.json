@@ -173,6 +173,9 @@
 				"PLANT": {
 					"type": "string"
 				},
+				"User": {
+					"type": "string"
+				},
 				"DEPART": {
 					"type": "string"
 				},
