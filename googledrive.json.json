@@ -1,25 +1,68 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Google Drive Upload API",
-    "version": "v3"
+    "title": "Microsoft Graph OneDrive Connector",
+    "description": "Custom Nintex Xtension to interact with OneDrive via MS Graph API",
+    "version": "1.0.0"
   },
-  "host": "www.googleapis.com",
-  "basePath": "/upload/drive/v3",
-  "schemes": ["https"],
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
-    "/files": {
-      "post": {
-        "summary": "Upload File",
-        "operationId": "uploadFile",
-        "consumes": ["multipart/form-data"],
-        "parameters": [
-          { "name": "uploadType", "in": "query", "type": "string", "required": true, "default": "multipart" },
-          { "name": "file", "in": "formData", "type": "file", "required": true, "description": "The file attachment control from K2" }
+    "/me/drive/root/children": {
+      "get": {
+        "summary": "List OneDrive Root Files",
+        "description": "Retrieves a list of files and folders in the root directory of the user's OneDrive.",
+        "operationId": "ListOneDriveRoot",
+        "security": [
+          {
+            "oauth2_auth": [
+              "Files.Read.All"
+            ]
+          }
         ],
         "responses": {
-          "200": { "description": "Success" }
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" },
+                      "size": { "type": "integer" },
+                      "webUrl": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "scopes": {
+        "https://graph.microsoft.com/Files.Read.All": "Read all files that the user has access to",
+        "offline_access": "Required by Nintex for token refresh"
       }
     }
   }
